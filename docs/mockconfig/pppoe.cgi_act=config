@@ -1,0 +1,14 @@
+{
+	"config": {
+		"idx": 900,
+		"active": 0,
+		"encap": 0,
+		"szIfName": "eth1",
+		"mtu": 0,
+		"szUsername": "test333ww",
+		"szPassword": "12345678",
+		"conn_type": 0,
+		"idle_timeout": 60,
+		"szServiceName": "66666ww"
+	}
+}

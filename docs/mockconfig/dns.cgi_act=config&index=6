@@ -1,0 +1,13 @@
+{
+	"config": {
+		"scenario": 2,
+		"dns6_from": [2, 2, 2],
+		"dns6_addr": ["", "", ""],
+		"dns4_from": [2, 2, 2],
+		"dns4_addr": ["1.1.1.1", "2.2.2.2", "3.3.3.3"],
+		"dns6_from_second": [0, 0, 0],
+		"dns6_addr_second": ["", "", ""],
+		"dns4_from_second": [0, 0, 0],
+		"dns4_addr_second": ["", "", ""]
+	}
+}
