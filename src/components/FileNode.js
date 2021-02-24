@@ -21,18 +21,11 @@ class FileNode extends Component {
     });
   };
   render() {
-    // const { title, submenu } = this.props;
     const { id, linkto, title, submenu, leaf, url} = this.props;
-    console.log("=sh= FileNode url = ",url, id);
     const { open } = this.state;    
 
     if (!submenu) {
-      // return {title};
-      // return (
-      //   <li key={id}>
-      //     <NavLink exact to={`${url}/${linkto}`}>{title}</NavLink>
-      //   </li>
-      // ) 
+      
       if (leaf) {
         return (
           <li key={id}>
@@ -47,7 +40,6 @@ class FileNode extends Component {
           </li>);
       }
       
-    // return <li>{title}-{leaf?1:0}</li>;
     }
     else {
       return (
@@ -62,7 +54,6 @@ class FileNode extends Component {
               ))}
             </ul>
           )}
-         {/* </div> */}
         </li>
       );
     }    

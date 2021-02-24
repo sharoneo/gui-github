@@ -1,0 +1,97 @@
+{
+	"config": {
+		"wan_port_as": "PORT5 as WAN ",
+		"act_prof": 3,
+		"prof_num": 3,
+		"CONN_PROF_1": {
+			"act_prof": 3,
+			"profile_name": "AUTO",
+			"profile_list": [{
+					"mode": 12,
+					"prio": 1,
+					"ecmp_weight": 30,
+					"bridge_iface_id": 0,
+					"iface_id": 1,
+					"proto": 32,
+					"protocol_val": 32,
+					"proto6": 2,
+					"protocol6_val": 2,
+					"fw_zone": 15,
+					"mgmt_mode": 0
+				}, {
+					"mode": 12,
+					"prio": 2,
+					"ecmp_weight": 30,
+					"bridge_iface_id": 0,
+					"iface_id": 3,
+					"proto": 32,
+					"protocol_val": 32,
+					"proto6": 2,
+					"protocol6_val": 2,
+					"fw_zone": 15,
+					"mgmt_mode": 0
+				}, {
+					"mode": 12,
+					"prio": 3,
+					"ecmp_weight": 30,
+					"bridge_iface_id": 0,
+					"iface_id": 55,
+					"proto": 16,
+					"protocol_val": 16,
+					"proto6": 2,
+					"protocol6_val": 2,
+					"fw_zone": 15,
+					"mgmt_mode": 0
+				}, {
+					"mode": 12,
+					"prio": 4,
+					"ecmp_weight": 30,
+					"bridge_iface_id": 0,
+					"iface_id": 138,
+					"proto": 32,
+					"protocol_val": 32,
+					"proto6": 2,
+					"protocol6_val": 2,
+					"fw_zone": 15,
+					"mgmt_mode": 0
+				}
+			]
+		},
+		"CONN_PROF_2": {
+			"act_prof": 3,
+			"profile_name": "LTE ONLY",
+			"profile_list": [{
+					"mode": 12,
+					"prio": 1,
+					"ecmp_weight": 30,
+					"bridge_iface_id": 0,
+					"iface_id": 3,
+					"proto": 32,
+					"protocol_val": 32,
+					"proto6": 2,
+					"protocol6_val": 2,
+					"fw_zone": 15,
+					"mgmt_mode": 0
+				}
+			]
+		},
+		"CONN_PROF_3": {
+			"act_prof": 3,
+			"profile_name": "WIFI ONLY",
+			"profile_list": [{
+					"mode": 12,
+					"prio": 1,
+					"ecmp_weight": 30,
+					"bridge_iface_id": 0,
+					"iface_id": 55,
+					"proto": 16,
+					"protocol_val": 16,
+					"proto6": 2,
+					"protocol6_val": 2,
+					"fw_zone": 15,
+					"mgmt_mode": 0
+				}
+			]
+		}
+	}
+}

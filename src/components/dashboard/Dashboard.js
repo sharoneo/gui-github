@@ -1,11 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import AppContext from "../../context/app-context";
 import { useTranslation } from "react-i18next";
-import { makeStyles } from "@material-ui/core/styles";
 import {
-  Container,
-  Card,
-  CardContent,
   Grid,
   Typography,
 } from "@material-ui/core";
@@ -14,8 +10,6 @@ import * as PAPI from "../../utility/papi";
 export default function Dashboard() {
   const { cfgShowLoading } = useContext(AppContext);
   const { t } = useTranslation();
-  //const classes = useStyles();
-  //const bull = <span className={classes.bullet}>•</span>;
   const [status, setStatus] = useState({});
 
   useEffect(() => {

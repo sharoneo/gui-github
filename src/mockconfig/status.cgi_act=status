@@ -1,0 +1,169 @@
+{
+	"status": {
+		"mark_wan_eth": false,
+		"mark_wan_lte0": false,
+		"mark_wan_lte1": false,
+		"mark_wan_wifi": false,
+		"lte_cur_roaming": 0,
+		"current_sim": {
+			"modem_sim_status": "SIM_STATUS_READY",
+			"modem_operator_name": "",
+			"modem_access": "",
+			"modem_sim_imsi": "123451234512345",
+			"phone_number": "",
+			"modem_band": "",
+			"modem_channel": 0,
+			"plmn": ""
+		},
+		"lte_net_mode": -999,
+		"lte_dpip0": {
+			"iface_id": 3,
+			"ipinfo": {
+				"ipRmt": "",
+				"ipMask": "",
+				"ipDns": ["", "", ""],
+				"default_gw": ""
+			},
+			"ip6info": {
+				"dns": ["", "", ""]
+			}
+		},
+		"lte_dpip1": {
+			"iface_id": 0,
+			"ipinfo": {
+				"ipRmt": "",
+				"ipMask": "",
+				"ipDns": ["", "", ""],
+				"default_gw": ""
+			},
+			"ip6info": {
+				"dns": ["", "", ""]
+			}
+		},
+		"lan_status": {
+			"addr": "192.168.1.1",
+			"mask": "255.255.255.0",
+			"dns6_1": "",
+			"dns6_2": "",
+			"dns6_3": ""
+		},
+		"current_lte_proto6": {
+			"addr6_lan": "",
+			"plen_lan": 0
+		},
+		"wan_conn_time": {
+			"eth_conntime": 0,
+			"lte_conntime": 0,
+			"v6_conntime": 0,
+			"wan_ethernet_conntime": 0,
+			"wan_wifi_conntime": 0
+		},
+		"if_statstic_sum": {
+			"wan_lte_upspeed": "0.000",
+			"wan_lte_downspeed": "0.000",
+			"wan_lte_TxRx_bytes": "0.000\/0.000",
+			"wan_lte_TxRx_dropped": "0\/0",
+			"wan_lte_main_upspeed": "0.000",
+			"wan_lte_main_downspeed": "0.000",
+			"wan_lte_main_TxRx_bytes": "0.000\/0.000",
+			"wan_lte_main_TxRx_dropped": "0\/0",
+			"wan_lte_management_upspeed": "0.000",
+			"wan_lte_management_downspeed": "0.000",
+			"wan_lte_management_TxRx_bytes": "0.000\/0.000",
+			"wan_lte_management_TxRx_dropped": "0\/0",
+			"lan_upspeed": "2521.250",
+			"lan_downspeed": "134.173",
+			"lan_TxRx_bytes": "3353.467\/214.537",
+			"lan_TxRx_dropped": "0\/0"
+		},
+		"eth_proto4": {
+			"ipRmt": "192.168.0.63",
+			"ipMask": "255.255.255.0",
+			"default_gw": "192.168.0.250",
+			"dns4_1": "192.168.0.128",
+			"dns4_2": "192.168.0.130",
+			"dns4_3": ""
+		},
+		"eth_proto6": {},
+		"vpn": {
+			"openvpn_connected": 0,
+			"ipsec_connected": 0,
+			"gre_connected": 0,
+			"pptp_connected": 0,
+			"l2tp_connected": 0,
+			"wifi_ap_connected": 0,
+			"ipv6_in_used": false
+		},
+		"gnss": {
+			"latitude": 0,
+			"longitude": 0,
+			"hdop": 0,
+			"altitude": 0,
+			"date": "",
+			"nsat": 0,
+			"type": 0,
+			"utc_time": ""
+		},
+		"wan_wifi": {
+			"wan_wifi_signal": 0,
+			"wan_wifi_channel": 0,
+			"signal_icon": 0,
+			"wan_wifi_ssid": "",
+			"wan_wifi_mac": "",
+			"wan_wifi_wps": 0
+		},
+		"wan_wifi_proto4": {
+			"dns4_1": "",
+			"dns4_2": "",
+			"dns4_3": ""
+		},
+		"wan_wifi_proto6": {},
+		"wifi_ap_conn_num": 0,
+		"do_status": "Alarm OFF",
+		"wan_dns": {
+			"dns4_1": "",
+			"dns4_2": "",
+			"dns4_3": ""
+		},
+		"wan_dns_second": {
+			"dns4_1": "",
+			"dns4_2": "",
+			"dns4_3": ""
+		},
+		"gre_with_keepalive_conn_num": 0,
+		"modem0": {
+			"modem_sim_status": "SIM_STATUS_READY",
+			"modem_access": "",
+			"modem_operator_name": "",
+			"modem_band": "",
+			"band_5g": "",
+			"modem_sim_imsi": "123451234512345",
+			"modem_sim_imei": "123456789012345",
+			"modem_sim_ccid": "11234567892123456789",
+			"phone_number": "",
+			"modem_channel": 0,
+			"signal": 0,
+			"rssi": 0,
+			"modem_roaming": 0,
+			"apn": "internet",
+			"plmn": ""
+		},
+		"modem1": {
+			"modem_sim_status": "SIM_STATUS_NOT_INSERTED",
+			"modem_access": "",
+			"modem_operator_name": "",
+			"modem_band": "",
+			"band_5g": "",
+			"modem_sim_imsi": "",
+			"modem_sim_imei": "123456789012345",
+			"modem_sim_ccid": "",
+			"phone_number": "",
+			"modem_channel": 0,
+			"signal": 0,
+			"rssi": 0,
+			"modem_roaming": 0,
+			"apn": "",
+			"plmn": ""
+		}
+	}
+}

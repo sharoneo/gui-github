@@ -15,7 +15,6 @@ import {
 } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
-// import '../../css/styles.css';
 
 const ConnectionTable = () => {
   const { cfgShowLoading } = useContext(AppContext);

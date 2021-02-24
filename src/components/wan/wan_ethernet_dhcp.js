@@ -5,7 +5,6 @@ import {
   Button, TextField, Select, InputBase, Grid
 } from '@material-ui/core';
 import * as PAPI from "../../utility/papi";
-//import '../../css/PROSModal.css'
 
 class WANEthDhcpClass extends Component {
   static contextType = AppContext;
@@ -58,7 +57,7 @@ class WANEthDhcpClass extends Component {
       'dns4_from_2': 2
     };
     console.log("setInputValueNum target id =", e.target.id, e.target.value);
-    let cfg = { ...this.state.cfg };//JSON.parse(JSON.stringify(this.state.cfg));
+    let cfg = { ...this.state.cfg };
     cfg.dns4_from[obj[e.target.id]] = parseInt(e.target.value);
     this.setState(() => ({
       cfg

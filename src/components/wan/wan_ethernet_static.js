@@ -7,8 +7,6 @@ import {
 
 import * as PAPI from "../../utility/papi";
 
-//import '../css/PROSModal.css'
-
 class WANEthStaticClass extends Component {
   static contextType = AppContext;
   constructor(props) {
@@ -95,21 +93,16 @@ class WANEthStaticClass extends Component {
   onApply = () => {
     console.log("onApply (cfg)=", JSON.stringify(this.state));
     /* etData(); */
-
   }
 
   onReset = () => {
-    /* console.log("onReset=", JSON.stringify(cfgdata));*/
     this.getData();
-
   }
-
 
 
   render() {
     const { t } = this.props;
     const { wanst_cfg, dns_cfg } = this.state;
-    //let cfgObj = this.state.cfg;
     return (
       <>
         <div>          

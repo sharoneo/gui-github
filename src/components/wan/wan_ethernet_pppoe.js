@@ -71,16 +71,7 @@ class WANEthPPPoEClass extends Component {
     this.getData();
 
   }
-
-  /* handleChange = (prop) => (event) => {
-    this.setState((state, props) => ({
-      values:{
-        password: event.target.value
-      }
-    }));
-    //setValues({ ...values, [prop]: event.target.value });
-  };
- */
+  
   handleClickShowPassword = () => {
     const { showPassword } = this.state;
     /* this.setState((state, props) => ({

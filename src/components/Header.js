@@ -1,41 +1,9 @@
 import React, { useState } from "react";
-// import { BrowserRouter } from "react-router-dom";
 import { Grid } from '@material-ui/core';
-import Navbar from "./Navbar";
-// import { useTranslation } from "react-i18next";
-// import LanguageContext from "../context/language-context";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 
-// const styles = theme => ({
-//   select: {
-//       '&:before': {
-//           borderColor: 'white',
-//       },
-//       '&:after': {
-//           borderColor: 'white',
-//       }
-//   },
-//   icon: {
-//       fill: 'white',
-//   },
-// });
+export default function Header() { 
 
-
-
-export default function Header() {
-  /* const { i18n } = useTranslation();
-  const [language, setLanguage] = useState("en");
-
-  const changeLang = (lang)=> {
-    setLanguage(lang);
-    i18n.changeLanguage(lang);
-  } */
-
-
- 
-  
-
-  // const value = {language,setLanguage, changeLang};
   let logo = "./images/sh1.png";
   return (
 
