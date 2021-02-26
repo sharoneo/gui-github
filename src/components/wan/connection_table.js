@@ -19,42 +19,37 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 const ConnectionTable = () => {
   const { cfgShowLoading } = useContext(AppContext);
   const { t } = useTranslation();
+
+  const useStyles = makeStyles({
+    table: {
+      minWidth: 700,
+    },
+  });  
+  const classes = useStyles();
+
   const dfEditCfg = {
     idx: -1,
     cfg: {}
   };
-
-  const dfCfgdata = {
-    act_prof: 1,
-    wan_port_as: "",
-    prof_num: 3,
-    CONN_PROF_1: {
-      profile_name: ""
-    },
-    CONN_PROF_2: {
-      profile_name: ""
-    },
-    CONN_PROF_3: {
-      profile_name: ""
-    }
-  };
-
-  const [cfgdata, setCfgdata] = useState(dfCfgdata);
-  /* const [connProf, setConnProf] = useState({
-    profile_name: ""
-  }); */
+  
+  const [cfgdata, setCfgdata] = useState({}); 
+  
   const [showModal, setShowModal] = useState(false);
   const [editCfg, setEditCfg] = useState(dfEditCfg);
-  const [pfNum, setPfNum] = useState([]);
+  //const classes = useStyles();
+  let prof = "CONN_PROF_" + cfgdata.act_prof;
+  let connProf = cfgdata[prof];
+  console.log("connProfXX =", JSON.stringify(connProf));
 
   const getData = () => {
     PAPI.PApiGet({ url: "connection_table.cgi?act=config" })
       .then((data) => {
       console.log("config data====", JSON.stringify(data));  
-        //let prof = "CONN_PROF_" + data.config.act_prof;
-        //setConnProf(data.config[prof]);
         setCfgdata(data.config);
-        cfgShowLoading(false);
+        setTimeout(() => {
+          cfgShowLoading(false);
+        }, 1000);
+        
       })
       .catch((err) => {
         console.log(err);
@@ -72,17 +67,11 @@ const ConnectionTable = () => {
         setCfgdata(data.config);
       })
       .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    console.log("=sh= useEffect cfgdata.prof_num=", JSON.stringify(cfgdata));
-    let pfArr = new Array();
-    pfArr.length = cfgdata.prof_num;
-    setPfNum(() => [...pfArr]);
-  }, [cfgdata["prof_num"]]);
+  };  
 
   useEffect(() => {
     console.log("=sh= useEffect cfgdata=", JSON.stringify(cfgdata));
+    //setPfNum(() => new Array(cfgdata.prof_num).fill(0));
   }, [cfgdata]);
 
   /* useEffect(() => {
@@ -100,9 +89,7 @@ const ConnectionTable = () => {
 
   useEffect(() => {
     cfgShowLoading(true);
-    setTimeout(() => {
-      getData();
-    }, 1000);
+    getData();
     //getData();
   }, []);
 
@@ -160,27 +147,7 @@ const ConnectionTable = () => {
     setTimeout(function () { getData(); }, 3000);
     //getData();
 
-  }
-
-
-  // const StyledTableCell = withStyles((theme) => ({
-  //   head: {
-  //     backgroundColor: theme.palette.common.black,
-  //     color: theme.palette.common.white,
-  //   },
-  //   body: {
-  //     fontSize: 14,
-  //   },
-  // }))(TableCell);
-
-  // const StyledTableRow = withStyles((theme) => ({
-  //   root: {
-  //     '&:nth-of-type(odd)': {
-  //       backgroundColor: theme.palette.action.hover,
-  //     },
-  //   },
-  // }))(TableRow);
-
+  }  
 
   const handleChangeProfile = (e) => {
     const act_prof = e.target.value;
@@ -209,16 +176,16 @@ const ConnectionTable = () => {
 
   }
 
-  const useStyles = makeStyles({
-    table: {
-      minWidth: 700,
-    },
-  });
+  
+/* 
   const classes = useStyles();
   let prof = "CONN_PROF_" + cfgdata.act_prof;
   let connProf = cfgdata[prof];
   console.log("connProfXX =", JSON.stringify(connProf));
-  return (
+   */
+  return (cfgdata && Object.keys(cfgdata).length === 0 && cfgdata.constructor === Object) ? 
+  '':
+  (
     <>
       <div className="pageContainer">
         <div className="pageMainContainer">
@@ -248,7 +215,7 @@ const ConnectionTable = () => {
                       id: 'act_prof'
                     }}
                   >
-                    {pfNum.map(
+                    {new Array(cfgdata.prof_num).fill(0).map(
                       (item, idx) => {
                         return (<option key={idx} value={idx + 1}>{idx + 1}</option>)
                       }
