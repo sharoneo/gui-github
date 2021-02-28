@@ -35,11 +35,9 @@ class PROSModalClass extends Component {
   }
 
   setInputValueNum(e) {
-    console.log("setInputValueNum target id =", e.target.id);
     let dataObj = { ...this.state.dataCfg };
     dataObj.cfg[e.target.id] = parseInt(e.target.value);
     this.setState({ ...dataObj });
-    //console.log("setInputValueNum=",JSON.stringify(dataObj));
   }
 
   render() {
@@ -67,7 +65,7 @@ class PROSModalClass extends Component {
       };
 
     let { dataCfg } = this.state;
-    //let { ifcObjArr } = this.state.pageData;
+    
     let WAN_PROTO_OFF = 0x01;
     let WAN_PROTO_DHCPC6 = 0x02;
     let WAN_PROTO_BRIDGE = 0x04;
@@ -144,22 +142,18 @@ class PROSModalClass extends Component {
     let VLAN_SUBNET_6 = 106;
     let VLAN_SUBNET_7 = 107;
     let VLAN_SUBNET_8 = 108;
-
-    /* let VLAN_SUBNET_ARR = [VLAN_SUBNET_1, VLAN_SUBNET_2, VLAN_SUBNET_3, VLAN_SUBNET_4,
-      VLAN_SUBNET_5, VLAN_SUBNET_6, ]
- */
+   
     return (
       <div className="gy-modalContainer" style={visible ? show : hide}>
         <div className="mask" onClick={() => onModalCancel()}></div>
         <div className="innerContent modal-dialog-scrollable" style={visible ? contShow : contHide}>
-          
+
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" color="primary">{t('CONN_TBL_TITLE')}-{title}</h5>
               <IconButton aria-label="Close" className="padding-0" onClick={() => onModalCancel()}>
-        <CloseIcon />
-      </IconButton>
-              {/* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> */}
+                <CloseIcon />
+              </IconButton>
             </div>
             <div className="modal-body">
               <Grid container item xs={12} spacing={1}>

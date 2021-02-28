@@ -87,15 +87,11 @@ const Main = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  // console.log("network route=",JSON.stringify(props.routes));
+  
   const linkList = Menulist.map((item) => {
     url = item.linkto;
     return (<ul className="tree" key={item.id}><FileNode url={url} {...item} /></ul>);
   });
-
-  // const linkList = Menulist[1].submenu.map((item) => {    
-  //   return <FileNode url={url} {...item} />;
-  // });  
 
   return (
 
@@ -104,7 +100,6 @@ const Main = () => {
       <div
         style={{
           padding: "0px",
-          // width: "16%",
           width: "186px",
           height: "99%",
           background: "#f0f0f0",

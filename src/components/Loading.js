@@ -4,8 +4,7 @@ import AppContext from "../context/app-context";
 
 const Loading = () => {
   let { showloading } = useContext(AppContext);
-  //const [showLoading, setshowLoading] = useState(true)
-
+  
   return (
     <> 
       {showloading ? (

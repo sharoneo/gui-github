@@ -23,30 +23,5 @@
 				"leaf": true	
 			}			
 		]
-	},	
-  {
-		"id": "lan",
-		"linkto": "/lan",		
-    "title": "LAN",
-    "submenu": [
-			{
-				"id": "ipv4",
-        "linkto": "/ipv4",		
-        "title": "IPv4",
-				"leaf": true	
-			},
-			{
-				"id": "vlan",
-        "linkto": "/vlan",		
-        "title": "VLAN",
-				"leaf": true	
-			},			
-			{
-				"id": "subnet",
-        "linkto": "/subnet",		
-        "title": "Subnet",
-				"leaf": true	
-      }  
-		]
-	}
+	}  
 ]

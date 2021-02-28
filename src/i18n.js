@@ -11,10 +11,7 @@ const resources = {
   },    
   'zh_tw': {
    translation: tw,
- },
-  /* 'fr': {
-   translation: fr,
- }, */
+ }
 };
 
 i18n.use(initReactI18next).init({

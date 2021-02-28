@@ -24,6 +24,7 @@
   "PRIORITY": "Priority",
   "ECMP_WEIGHT": "ECMP Weight",
   "_0_OFF": "(0 : Off )",
+  "RESET": "Reset",
   "CANCEL": "Cancel",
   "APPLY": "Apply",
   "SVCPORT_ENTRY_ACTION": "Action",

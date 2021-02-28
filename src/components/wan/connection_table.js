@@ -8,7 +8,6 @@ import EditWin from "./connection_table_modal.js";
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
 import {
-  Container,
   Button, IconButton, TextField, Select, InputBase,
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography,
   Paper, Grid
@@ -59,14 +58,9 @@ const ConnectionTable = () => {
 
   const setData = () => {
     console.log("setData", JSON.stringify(cfgdata));
-    PAPI.PApiGet({ url: "connection_table.cgi?act=config" })
-      .then((data) => {
-        //console.log("config data", JSON.stringify(data));  
-        //let prof = "CONN_PROF_" + data.config.act_prof;
-        //setConnProf(data.config[prof]);
-        setCfgdata(data.config);
-      })
-      .catch((err) => console.log(err));
+    setCfgdata(cfgdata);
+    //PAPI.PApiSet
+    getData();
   };  
 
   useEffect(() => {
@@ -88,6 +82,7 @@ const ConnectionTable = () => {
   }, [editCfg]);
 
   useEffect(() => {
+    console.log("=sh= useEffect ================", JSON.stringify(cfgdata));
     cfgShowLoading(true);
     getData();
     //getData();
@@ -96,10 +91,7 @@ const ConnectionTable = () => {
 
 
   function onModalApply(edCfg) {
-    //console.log("onModalApply=", JSON.stringify(edCfg));
-    //let applycfg = JSON.parse(JSON.stringify(cfgdata));
     let applycfg = { ...connProf };
-    console.log("onModalApply applycfg(1)=", JSON.stringify(applycfg));
     applycfg["profile_list"][edCfg.idx] = edCfg.cfg;
     console.log("onModalApply applycfg(2)=", JSON.stringify(applycfg));
     //setConnProf(applycfg);
@@ -134,23 +126,18 @@ const ConnectionTable = () => {
 
   function onApply() {
     console.log("onApply (cfgdata)=", JSON.stringify(cfgdata));
-    setData();
-    /* let applycfg = { ...connProf };
-    applycfg["profile_list"][edCfg.idx] = edCfg.cfg;
-    console.log("onModalApply applycfg(2)=", JSON.stringify(applycfg));
-    setConnProf(applycfg); */
+    cfgShowLoading(true);
+    setData();    
   }
 
   function onReset() {
     console.log("onReset=", JSON.stringify(cfgdata));
     cfgShowLoading(true);
-    setTimeout(function () { getData(); }, 3000);
-    //getData();
-
+    setTimeout(function () { getData(); }, 1000);
   }  
 
   const handleChangeProfile = (e) => {
-    const act_prof = e.target.value;
+    //const act_prof = e.target.value;
     //let prof = "CONN_PROF_" + act_prof;
     setCfgdata({
       ...cfgdata,
@@ -166,23 +153,12 @@ const ConnectionTable = () => {
     setCfgdata({
       ...cfgdata,
       [prof]: {
+        ...cfgdata[prof], 
         [e.target.id]: e.target.value
       }
-    });
-    /* setConnProf({
-      ...cfgdata[prof], 
-      profile_name: e.target.value
-    }); */
+    });   
+  }  
 
-  }
-
-  
-/* 
-  const classes = useStyles();
-  let prof = "CONN_PROF_" + cfgdata.act_prof;
-  let connProf = cfgdata[prof];
-  console.log("connProfXX =", JSON.stringify(connProf));
-   */
   return (cfgdata && Object.keys(cfgdata).length === 0 && cfgdata.constructor === Object) ? 
   '':
   (
@@ -266,7 +242,6 @@ const ConnectionTable = () => {
               </Grid>
             </Grid>
 
-
             {/* table */}
             <div className="p-top-bottom-30"></div>
             <TableContainer component={Paper}>
@@ -279,12 +254,7 @@ const ConnectionTable = () => {
                     <TableCell align="center">{t('INTERFACE')}</TableCell>
                     <TableCell align="center">{t('PROTOCOL')}</TableCell>
                     <TableCell align="center">{t('SVCPORT_ENTRY_ACTION')}</TableCell>
-                    {/* <StyledTableCell>Dessert (100g serving)</StyledTableCell>
-            <StyledTableCell align="right">Calories</StyledTableCell>
-            <StyledTableCell align="right">Fat&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Carbs&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Protein&nbsp;(g)</StyledTableCell>
-            <StyledTableCell align="right">Test</StyledTableCell> */}
+                    
                   </TableRow>
                 </TableHead>
                 {/* <TableBody> */}
@@ -325,7 +295,7 @@ const ConnectionTable = () => {
           <div className="pageFooter">
             <Button className="m-left-right-20 btn btn-cancel" variant="contained"
               onClick={() => onReset()}>
-              {t('CANCEL')}
+              {t('RESET')}
             </Button>
             <Button className="m-left-right-20 btn btn-apply" variant="contained" onClick={() => onApply()}>
               {t('APPLY')}

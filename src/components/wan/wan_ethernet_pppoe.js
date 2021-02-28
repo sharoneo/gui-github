@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import AppContext from "../../context/app-context";
 import { withTranslation } from 'react-i18next';
 import {
-  Button, IconButton, TextField, InputBase, Grid
+  Button, IconButton, TextField, InputBase, Grid, Input
 } from '@material-ui/core';
 
 import * as PAPI from "../../utility/papi";
@@ -12,73 +12,44 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-//import '../css/PROSModal.css'
-
 class WANEthPPPoEClass extends Component {
   static contextType = AppContext;
   constructor(props) {
     super(props);
     this.state = {
-      cfg: {
-        "idx": 0,
-        "active": 0,
-        "encap": 0,
-        "szIfName": "",
-        "mtu": 0,
-        "szUsername": "",
-        "szPassword": "",
-        "conn_type": 0,
-        "idle_timeout": 0,
-        "szServiceName": ""
-      },
+      cfg: {},
       showPassword: false
     }
-    console.log("cfgdata ==", this.state.cfg);
   }
 
   componentDidMount() {
-    let vm = this;
+    let self = this;
     let { cfgShowLoading } = this.context;
     cfgShowLoading(true);
-    //this.context.cfgShowLoading(true);
-    setTimeout(function () {
-      vm.getData();
-      cfgShowLoading(false);
-    }, 1000);
-    //this.getData();
+    self.getData();
   }
 
   getData = () => {
+    let { cfgShowLoading } = this.context;
     PAPI.PApiGet({ url: "pppoe.cgi?act=config" })
       .then((data) => {
-
         this.setState((prevState, props) => ({
           cfg: data.config
         }));
-        console.log("getData", JSON.stringify(this.state.cfg));
+        setTimeout(() => {
+          cfgShowLoading(false);
+        }, 1000);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setTimeout(() => {
+          cfgShowLoading(false);
+        }, 1000);
+        console.log(err)
+      });
   };
-
-  onApply = () => {
-    console.log("onApply cfg=", JSON.stringify(this.state.cfg));
-    /* setData(); */
-
-  }
-
-  onReset = () => {
-    console.log("onReset=", JSON.stringify(this.state.cfg));
-    this.getData();
-
-  }
   
   handleClickShowPassword = () => {
-    const { showPassword } = this.state;
-    /* this.setState((state, props) => ({
-      values:{
-        showPassword: !values.showPassword
-      }
-    })); */
+    const { showPassword } = this.state;    
     this.setState(() => ({
       showPassword: !showPassword
     }));
@@ -89,7 +60,6 @@ class WANEthPPPoEClass extends Component {
   };
 
   setInputValue = (e) => {
-    console.log("setInputValue target =", e.target.id, e.target.value);
     this.setState((state) => ({
       cfg: {
         [e.target.id]: e.target.value
@@ -98,22 +68,28 @@ class WANEthPPPoEClass extends Component {
   }
 
   onApply = () => {
+    let self = this;
+    let { cfgShowLoading } = this.context;
     console.log("onApply cfg=", JSON.stringify(this.state.cfg));
-    /* setData(); */
-
+    cfgShowLoading(true);
+    setTimeout(function () { self.getData(); }, 1000);
   }
 
   onReset = () => {
-    this.getData();
+    let self = this;
+    let { cfgShowLoading } = this.context;
+    cfgShowLoading(true);
+    setTimeout(function () { self.getData(); }, 1000);
+  }  
 
-  }
-  // const {cfgShowLoading} = this.context;
-
-  render() {
+  render() 
+  {
     const { t } = this.props;
     const { showPassword } = this.state;
     let { cfg } = this.state;
-    return (
+    return (cfg && Object.keys(cfg).length === 0 && cfg.constructor === Object) ? 
+    '':
+    (
       <>        
         <div className="subTitle">{t('WANETHERNET_LEGEND_PPPOE')}</div>
         <Grid container item xs={12} spacing={1}>
@@ -142,8 +118,31 @@ class WANEthPPPoEClass extends Component {
               value={t('WANETHERNET_PASSWORD')} />
           </Grid>
 
-          <Grid item md={6} sm={12}>
-            <FilledInput
+          <Grid item md={6} sm={12}> 
+          <Input 
+            hiddenLabel 
+            id="standard-adornment-password"
+            type={showPassword ? 'text' : 'password'} 
+            variant="filled" 
+            fullWidth             
+            value={cfg.szPassword} 
+            onChange={(e) => this.setInputValue(e)}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={this.handleClickShowPassword}
+                    onMouseDown={this.handleMouseDownPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+          />
+
+          
+            {/* <FilledInput
               hiddenLabel
               fullWidth
               id="szPassword"
@@ -162,7 +161,7 @@ class WANEthPPPoEClass extends Component {
                   </IconButton>
                 </InputAdornment>
               }
-            />
+            /> */}
           </Grid>
         </Grid>
 

@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
-// import { NavLink, Route, Switch, useRouteMatch } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import FolderOpenIcon from '@material-ui/icons/FolderOpen';
-import FolderIcon from '@material-ui/icons/Folder';
-import DescriptionIcon from '@material-ui/icons/Description';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
 import RemoveOutlinedIcon from '@material-ui/icons/RemoveOutlined';
-import StarIcon from '@material-ui/icons/Star';
-import GradeIcon from '@material-ui/icons/Grade';
-//import Menu from '@material-ui/core/Menu';
-//import MenuItem from '@material-ui/core/MenuItem';
 
 class FileNode extends Component {
   state = {

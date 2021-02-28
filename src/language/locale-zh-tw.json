@@ -24,6 +24,7 @@
   "PRIORITY": "優先",
   "ECMP_WEIGHT": "ECMP Weight",
   "_0_OFF": "(0 : Off )",
+  "RESET": "清除",
   "CANCEL": "取消",
   "APPLY": "套用",
   "SVCPORT_ENTRY_ACTION": "操作",
